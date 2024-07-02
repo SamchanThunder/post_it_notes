@@ -24,7 +24,7 @@ function App() {
       <Draggable handle=".moveIt">
       <div className="postIt">
         <div className="moveIt">Drag Me</div>
-        <button className="editIt" onClick={toggleEditTextBackground}>{theText}</button>
+        <button className="editIt" onClick={toggleEditTextBackground}><div className="realText">{theText}</div></button>
         {showEditTextBackground && <div className="editTextBackground">
           <div id="flexTools">
             <button id="tool"></button>
