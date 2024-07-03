@@ -23,7 +23,7 @@
   z-index: 0;
   text-align: center;
   color: rgba(255, 255, 255, 0.2);
-  font-size: 32px;
+  font-size: 22px;
 }
 
 #moveIt:hover {
@@ -41,7 +41,7 @@
 #realText{
   position: absolute;
   border: none;
-  top: 55px;
+  top: 20%;
   background: none;
   width: 95%;
   height: 80%;
@@ -118,6 +118,19 @@
   cursor: pointer;
 }
 
+#trash{
+  position: absolute;
+  top: 1px;
+  right: 60px;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: none;
+}
+#trash:hover{
+  cursor: pointer;
+}
+
 #inputText{
   position: absolute;
   bottom: 5px;
@@ -183,6 +196,17 @@
 }
 #addPost:hover{
   cursor: pointer;
+}
+
+#scaleIt{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 0;
+  bottom: 0;
+  cursor: nwse-resize;
+  border: none;
+  background: none; 
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

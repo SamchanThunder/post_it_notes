@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './App.css'
 import Draggable from 'react-draggable';
+import { Resizable } from 're-resizable'
 import colorImg from './color.svg';
 import postColorImg from './postColor.svg';
+import trash from './trash.svg';
 
-const PostIt = ({ id }) => {
+const PostIt = ({ id, onDelete }) => {
   const [showEditTextBackground, setShowEditTextBackground] = useState(false);
   const [theText, settheText] = useState("Edit Me");
   const [colorChooser, setColorChooser] = useState(false);
@@ -14,6 +16,7 @@ const PostIt = ({ id }) => {
   const [postColor, setPostColor] = useState("#78db78");
   const [fontWeight, setFontWeight] = useState("normal");
   const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [length, setLength] = useState(300);
   const colorCatalog = ["#78db78","#ffb64f","#8ac0ff","#fdffa3","#ffa3fd" ];
   const toggleEditTextBackground = () => {
     setShowEditTextBackground(!showEditTextBackground);
@@ -52,7 +55,7 @@ const PostIt = ({ id }) => {
 
   return (
     <Draggable handle="#moveIt">
-      <div id="postIt" style={{ top: `${position.top}vh`, left: `${position.left}vw`, backgroundColor: postColor }}>
+      <Resizable id="postIt"  defaultSize={{width: 300, height: 300}}style={{ top: `${position.top}vh`, left: `${position.left}vw`, backgroundColor: postColor}} lockAspectRatio={true} minWidth={200} minHeight={200} maxWidth={400} maxHeight={400}>
         <div id="moveIt">Drag Me</div>
         <button id="editIt" onClick={toggleEditTextBackground}>
           <div id="realText" style={{ fontWeight: fontWeight, fontSize: fontSize + "px", color: fontColor }}>{theText}</div>
@@ -85,11 +88,15 @@ const PostIt = ({ id }) => {
               <button id="tool" onClick={toggleColor}><img src={colorImg} alt="Choose Color" /></button>
               <input id="toolSize" type="number" value={fontSize} onChange={(e) => setFontSize(e.target.value)} />
             </div>
+            <button id="trash" onClick={() => {onDelete(id)}}><img src={trash} alt="Delete"></img></button>
             <button id="exit" onClick={toggleEditTextBackground}>X</button>
             <textarea id="inputText" value={theText} style={{ fontWeight: fontWeight }} onChange={(e) => settheText(e.target.value)}></textarea>
           </div>
         )}
-      </div>
+        <button id="scaleIt">
+          
+        </button>
+      </Resizable>
     </Draggable>
   );
 };
@@ -103,11 +110,17 @@ function App() {
     const newId = postItNotes.length + 1;
     setPostItNotes([...postItNotes, { id: newId }]);
   };
+
+  const deletePostItNote = (id) => {
+    const updatedPostItNotes = postItNotes.filter(note => note.id !== id);
+    setPostItNotes(updatedPostItNotes);
+  };
+
   return (
     <div id="App">
         <button id="addPost" onClick={addPostItNote}>+</button>
       {postItNotes.map(note => (
-        <PostIt key={note.id} id={note.id} />
+        <PostIt key={note.id} id={note.id} onDelete={deletePostItNote} />
       ))}
     </div>
   );
