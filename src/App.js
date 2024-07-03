@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css'
 import Draggable from 'react-draggable';
-import { Resizable } from 're-resizable'
+import {Resizable} from 're-resizable'
 import colorImg from './color.svg';
 import postColorImg from './postColor.svg';
 import trash from './trash.svg';
@@ -16,8 +16,8 @@ const PostIt = ({ id, onDelete }) => {
   const [postColor, setPostColor] = useState("#78db78");
   const [fontWeight, setFontWeight] = useState("normal");
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const [length, setLength] = useState(300);
   const colorCatalog = ["#78db78","#ffb64f","#8ac0ff","#fdffa3","#ffa3fd" ];
+
   const toggleEditTextBackground = () => {
     setShowEditTextBackground(!showEditTextBackground);
   };
@@ -53,9 +53,10 @@ const PostIt = ({ id, onDelete }) => {
     setPostColor(colorCatalog[randomColor])
   }, []);
 
+
   return (
     <Draggable handle="#moveIt">
-      <Resizable id="postIt"  defaultSize={{width: 300, height: 300}}style={{ top: `${position.top}vh`, left: `${position.left}vw`, backgroundColor: postColor}} lockAspectRatio={true} minWidth={200} minHeight={200} maxWidth={400} maxHeight={400}>
+      <Resizable id="postIt" defaultSize={{width: 250, height: 250}} style={{ position: "absolute", top: `${position.top}vh`, left: `${position.left}vw`, backgroundColor: postColor}} lockAspectRatio={true} minWidth={200} minHeight={200} maxWidth={400} maxHeight={400}>
         <div id="moveIt">Drag Me</div>
         <button id="editIt" onClick={toggleEditTextBackground}>
           <div id="realText" style={{ fontWeight: fontWeight, fontSize: fontSize + "px", color: fontColor }}>{theText}</div>
@@ -93,9 +94,6 @@ const PostIt = ({ id, onDelete }) => {
             <textarea id="inputText" value={theText} style={{ fontWeight: fontWeight }} onChange={(e) => settheText(e.target.value)}></textarea>
           </div>
         )}
-        <button id="scaleIt">
-          
-        </button>
       </Resizable>
     </Draggable>
   );
