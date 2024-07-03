@@ -193,6 +193,7 @@
   border: dashed rgb(255, 255, 255);
   border-width: 5px;
   border-radius: 20px;
+  text-align: center;
 }
 #addPost:hover{
   cursor: pointer;
