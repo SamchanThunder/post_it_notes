@@ -1,8 +1,7 @@
-.postIt {
+#postIt {
   position: absolute;
-  left: 36%;
-  top: 25%;
-  transform: translate(-50%,-50%);
+  left: 20%; 
+  top: 200px;  
   width: 300px;
   height: 300px;
   background-color: #78db78;
@@ -14,7 +13,7 @@
   border-bottom-left-radius: 15px;
 }
 
-.moveIt {
+#moveIt {
   position: absolute;
   top: 0;
   left: 0;
@@ -23,15 +22,15 @@
   background: rgb(0, 0, 0, .03);
   z-index: 0;
   text-align: center;
-  color: rgba(255, 255, 255, 0.123);
+  color: rgba(255, 255, 255, 0.2);
   font-size: 32px;
 }
 
-.moveIt:hover {
+#moveIt:hover {
   cursor: pointer;
 }
 
-.editIt {
+#editIt {
   border: none;
   background: none;
   width: 100%;
@@ -39,7 +38,7 @@
   cursor: text;
 }
 
-.realText{
+#realText{
   position: absolute;
   border: none;
   top: 55px;
@@ -51,12 +50,12 @@
   overflow-wrap: break-word;
   font-size: 25px;
   color: rgb(255, 255, 255);
-  overflow: hidden; /* Hide overflow to prevent text overflowing container */
-  white-space: pre-wrap; /* Preserve spaces and wrap lines */
+  overflow: hidden;  
+  white-space: pre-wrap;  
   word-wrap: break-word;
 }
 
-.editTextBackground {
+#editTextBackground {
   position: absolute;
   background: rgb(255, 255, 255);
   width: 400px;
@@ -168,6 +167,23 @@
   border: solid rgb(182, 182, 182);
 }
 
+#addPost{
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transform: translate(-50%,-50%);
+  width: 110px;
+  height: 110px;
+  color: white;
+  font-size: 80px;
+  background-color: #78db78;
+  border: dashed rgb(255, 255, 255);
+  border-width: 5px;
+  border-radius: 20px;
+}
+#addPost:hover{
+  cursor: pointer;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
