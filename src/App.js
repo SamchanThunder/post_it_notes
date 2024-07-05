@@ -57,8 +57,8 @@ const PostIt = ({ id, onDelete }) => {
   return (
     <Draggable handle="#moveIt">
       <Resizable id="postIt" defaultSize={{width: 250, height: 250}} style={{ position: "absolute", top: `${position.top}vh`, left: `${position.left}vw`, backgroundColor: postColor}} lockAspectRatio={true} minWidth={200} minHeight={200} maxWidth={400} maxHeight={400}>
-        <div id="moveIt">Drag Me</div>
-        <button id="editIt" onClick={toggleEditTextBackground}>
+        <div id="moveIt" className="noselect">Drag Me</div>
+        <button id="editIt" className="noselect" onClick={toggleEditTextBackground}>
           <div id="realText" style={{ fontWeight: fontWeight, fontSize: fontSize + "px", color: fontColor }}>{theText}</div>
         </button>
         {showEditTextBackground && (
@@ -116,7 +116,7 @@ function App() {
 
   return (
     <div id="App">
-        <button id="addPost" onClick={addPostItNote}>+</button>
+        <button id="addPost" className="noselect" onClick={addPostItNote}>+</button>
       {postItNotes.map(note => (
         <PostIt key={note.id} id={note.id} onDelete={deletePostItNote} />
       ))}
